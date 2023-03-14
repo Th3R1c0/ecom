@@ -42,9 +42,15 @@ export const storeReducer = createSlice({
   },
   reducers: {
     updateCart: (state, action) => {
+      if (action.payload.type == 'increment') {
+        state.cartitems[action.payload.payload]
+      }
       if (action.payload.type == 'add') {
-
+        const item = action.payload.payload
+        
+        console.log(item)
         state.cartitems = [...state.cartitems, action.payload.payload];
+        console.log(state.cartitems)
       } else if (action.payload.type === 'clear') {
         state.cartitems = [];
       } else if (action.payload.type === 'delete') {

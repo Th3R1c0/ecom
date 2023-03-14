@@ -73,29 +73,7 @@ const SearchBar = () => {
   }
 };
 
-const Carts = () => {
-  const dispatch = useDispatch();
-  const cartitems = useSelector((state) => state.store.cartitems);
 
-  return (
-    <div>
-      <button onClick={() => dispatch(updateCart({ type: 'clear' }))}>
-        clear cart{' '}
-      </button>
-      cart:
-      {cartitems?.map((c) => (
-        <div>
-          {c.title}
-          <button
-            onClick={() => dispatch(updateCart({ type: 'delete', payload: c }))}
-          >
-            -
-          </button>
-        </div>
-      ))}
-    </div>
-  );
-};
 
 
 

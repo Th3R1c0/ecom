@@ -1,6 +1,7 @@
 
 import { useRouter } from "next/router";
 import { Suspense, useEffect, useState } from "react";
+import Carousel from "react-multi-carousel";
 
 
 const useFetch = (url: string) => {
@@ -73,17 +74,64 @@ const SingleProduct = () => {
 }
 
 const MoreProducts = () => {
+  const responsive = {
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 3,
+      slidesToSlide: 3 // optional, default to 1.
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 2,
+      slidesToSlide: 2 // optional, default to 1.
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 1,
+      slidesToSlide: 1 // optional, default to 1.
+    }
+  };
+  const data = [1,2,3,4]
+
   return (
     <>
-    <div className="flex flex-col w-full h-max  p-8 text-4xl space-y-4">
-    <span>Other Products</span>
-    <div className="border-2 border-black w-full h-[300px]">
-      More products
+    <div className="w-full h-max p-4 text-4xl  tracking-wide">
+      <h1>Similar Products:</h1>
     </div>
-</div>
-    </>
-  )
-}
+  <Carousel
+  
+    swipeable={false}
+    draggable={false}
+    showDots={true}
+    responsive={responsive}
+    ssr={true} // means to render carousel on server-side.
+    infinite={true}
+    autoPlaySpeed={1000}
+    keyBoardControl={true}
+    customTransition="transform 300ms ease-in-out"
+    transitionDuration={500}
+    containerClass="carousel-container"
+    
+    dotListClass="custom-dot-list-style"
+    itemClass="carousel-item-padding-40-px"
+  >
+         {
+          data.map((category) => (
+            <div
+            className='w-full rounded-sm p-2'
+            >
+                          <div className=" bg-[conic-gradient(at_top_right,_var(--tw-gradient-stops))] from-gray-200 via-gray-400 to-gray-600 rounded-lg h-[400px]">
+              
+              {/*<Image src={product.images[0]} className='w-full h-full' width='50' height='50' />*/}
+          </div>
+              <div className='p-8 flex justify-between'><p className='text-4xl'>{category}</p><button className='p-4 rounded-md bg-purple-100 font-bold'>Shop Now</button></div>
+            </div>
+          ))}
+  </Carousel>
+  </>
+  ) 
+            }
+
 
 
 const SingleProductPage = () => {
