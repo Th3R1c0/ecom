@@ -21,6 +21,8 @@ export const fetchCategories = createAsyncThunk(
   }
 );
 
+
+
 export const storeReducer = createSlice({
   name: 'store',
   initialState: {
@@ -75,6 +77,7 @@ export const storeReducer = createSlice({
       state.categorystate.loading = false;
       state.categorystate.data = action.payload;
     });
+
   },
 });
 

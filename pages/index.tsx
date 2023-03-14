@@ -152,7 +152,7 @@ export default function App() {
         </div>
       </div>
     <div className='font-serif'>
-      <Header />
+      
       <Search />
       {/*<Carts />
       <SearchBar />*/}

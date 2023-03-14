@@ -1,6 +1,7 @@
 import getConfig from "next/config";
 import Head from "next/head";
 import { useRouter } from "next/router";
+import { Header } from "./Header";
 
 const { publicRuntimeConfig } = getConfig();
 
@@ -79,6 +80,7 @@ const Layout = ({ children, ...customMeta }: LayoutProps) => {
         )}
         <title key="title">{meta.title}</title>
       </Head>
+      <Header />
       <main>{children}</main>
     </>
   );
